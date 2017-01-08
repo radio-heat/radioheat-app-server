@@ -1,0 +1,23 @@
+﻿{
+  "datetime": {
+    "day": 1,
+    "month": 1,
+    "year": 2000,
+    "hour": 8,
+    "minute": 34,
+    "second": 32
+  },
+  "location": {
+    "latitude": 50.1231,
+    "longitude": 8.31223,
+    "storey": 1
+  },
+  "wlanNetworks": [
+    {
+      "bssid": "12:00:00:00:00:00",
+      "frequency": 22,
+      "ssid": "the-ssid",
+      "strength": -32
+    }
+  ]
+}

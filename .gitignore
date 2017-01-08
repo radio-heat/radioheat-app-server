@@ -1,0 +1,8 @@
+﻿# used modules
+node_modules
+
+# intelli-sense (from visual studio)
+typings
+
+# obj
+obj
