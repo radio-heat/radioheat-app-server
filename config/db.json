@@ -1,0 +1,8 @@
+﻿{
+  "database": "radioheat",
+  "host": "",
+  "password": "",
+  "poolSize": 20,
+  "port": 5432,
+  "user": ""
+}

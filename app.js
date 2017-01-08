@@ -8,6 +8,8 @@
 // dependencies
 // --------------------
 
+var dbConfig = require('./config/db.json');					// import database configuration details
+
 var express = require('express');							// import express.js (module to handle REST-requests)
 var app = express();										// initialise express, create a new app
 var bodyParser = require('body-parser');					// import body-parser (module to get json-data)
@@ -23,7 +25,7 @@ app.disable('x-powered-by');								// hide version number (improve security)
 app.use(bodyParser.json());									// make use of body-parser (body-request => json format)
 
 // initialise service
-services.init();											// initialise service-module
+services.init(dbConfig);									// initialise service-module
 
 // routes
 app.post('/add', services.addMeasurement);					// <domain>/add (store a new measurement)

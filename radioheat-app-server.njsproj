@@ -37,6 +37,7 @@
     <Compile Include="validation\validator.location.js" />
     <Compile Include="validation\validator.wlan.js" />
     <Content Include=".gitignore" />
+    <Content Include="config\db.json" />
     <Content Include="data-structure-templates\data-input.json" />
     <Content Include="package.json" />
     <Content Include="README.md" />
@@ -44,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="data-structure-templates\" />
+    <Folder Include="config\" />
     <Folder Include="services\" />
     <Folder Include="validation\" />
   </ItemGroup>

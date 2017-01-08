@@ -18,20 +18,11 @@ var validator = require('../validation/validator.add-measurement.js');		// servi
 // --------------------
 
 // module initialisation
-module.exports.init = function()
+module.exports.init = function(dbConfig)
 {
-	
-	dbc = pgp({																// connect to database server
-		host: '',
-		port: 5432,
-		database: '',
-		user: '',
-		password: '',
-		poolSize: 20
-	});
+	dbc = pgp(dbConfig);													// connect to database server
 
-	console.log('Database connection initialised.');
-
+	console.log('Database connection initialised.');						// output initialised message
 };
 
 // add a measurement
