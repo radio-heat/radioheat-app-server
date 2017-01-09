@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
+    <Compile Include="extensions\express-extension.js" />
     <Compile Include="services\main-services.js" />
     <Compile Include="validation\validator.add-measurement.js" />
     <Compile Include="validation\validator.datetime.js" />
