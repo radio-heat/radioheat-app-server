@@ -1,12 +1,30 @@
-﻿
-// dependencies
+﻿/* -----------------------------------------
+ * Author: Philip Jurke
+ * Last changes:
+ * 09.01.2017 - add comments
+ * -----------------------------------------*/
 
+// --------------------
+// dependencies
+// --------------------
+
+// import validator for datetimes
 var datetimeValidator = require('./validator.datetime.js');
+
+// import validator for locations
 var locationValidator = require('./validator.location.js');
+
+// import validator for wlan-networks
 var wlanValidator = require('./validator.wlan.js');
 
+// import add-measurement-input template
 var dataTemplate = require('./template.add-measurement-input.json');
 
+// --------------------
+// functionality
+// --------------------
+
+// validate the given input
 module.exports.validate = function(input)
 {
 	

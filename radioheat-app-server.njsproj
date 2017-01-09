@@ -47,6 +47,8 @@
   <ItemGroup>
     <Folder Include="data-structure-templates\" />
     <Folder Include="config\" />
+    <Folder Include="logs\" />
+    <Folder Include="extensions\" />
     <Folder Include="services\" />
     <Folder Include="validation\" />
   </ItemGroup>

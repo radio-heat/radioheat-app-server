@@ -9,37 +9,49 @@
 // dependencies
 // --------------------
 
-var dbConfig = require('./config/db.json');					// import database configuration details
-var serverConfig = require('./config/server.json');			// import app-server configuration details
+// import database configuration details
+var dbConfig = require('./config/db.json');
 
-var express = require('express');							// import express.js (module to handle REST-requests)
-var app = express();										// initialise express, create a new app
-var bodyParser = require('body-parser');					// import body-parser (module to get json-data)
+// import app-server configuration details
+var appConfig = require('./config/server.json');
 
-var services = require('./services/main-services.js');		// import services-module (outsourced)
+// import express.js (module to handle REST-requests)
+var express = require('express');
+
+// initialise express, create a new app
+var app = express();
+
+// import body-parser (module to get json-data)
+var bodyParser = require('body-parser');
+
+// import default route handler
+var expressExtensions = require('./extensions/express-extension.js');
+
+// import services-module (outsourced)
+var services = require('./services/main-services.js');
 
 // --------------------
 // functionality
 // --------------------
 
-// configure express
-app.disable('x-powered-by');								// hide version number (improve security)
-app.use(bodyParser.json());									// make use of body-parser (body-request => json format)
+// === configure express
 
-// initialise service
-services.init(dbConfig);									// initialise service-module
+// make use of body-parser (body-request => json format)
+app.use(bodyParser.json());
 
-// routes
-app.post('/add', services.addMeasurement);					// <domain>/add (store a new measurement)
+// initialise service-module
+services.init(dbConfig);
 
-// not registered routes
-app.use(function(webRequest, webResponse)					// default route (not provided service-urls)
-{
-	webResponse.sendStatus(404);
-});
+// === routes
+
+// <domain>/add (store a new measurement)
+app.post('/add', services.addMeasurement);
+
+// default route (not provided service-urls)
+app.use(expressExtensions.defaultRoute);
 
 // start listening
-app.listen(serverConfig.port, function()
+app.listen(appConfig.port, function()
 {
 	console.log('Application server initialised.');
 });

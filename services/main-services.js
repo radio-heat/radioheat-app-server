@@ -8,10 +8,14 @@
 // dependencies
 // --------------------
 
-var pgp = require('pg-promise')();											// import pg-promise (postgresql-connection)
-var dbc;																	// database-connection handle
+// import pg-promise (postgresql-connection)
+var pgp = require('pg-promise')();
 
-var validator = require('../validation/validator.add-measurement.js');		// service validator
+// database-connection handle
+var dbc;
+
+// validator for this service
+var validator = require('../validation/validator.add-measurement.js');
 
 // --------------------
 // services
@@ -20,13 +24,15 @@ var validator = require('../validation/validator.add-measurement.js');		// servi
 // module initialisation
 module.exports.init = function(dbConfig)
 {
-	dbc = pgp(dbConfig);													// connect to database server
-
-	console.log('Database connection initialised.');						// output initialised message
+	// connect to database server
+	dbc = pgp(dbConfig);
+	
+	// output initialised message
+	console.log('Database connection initialised.');
 };
 
-// add a measurement
-module.exports.addMeasurement = function(webRequest, webResponse)			// store a new measurement
+// add / store a new measurement
+module.exports.addMeasurement = function(webRequest, webResponse)
 {
 	
 	//var results = validator.validate(webRequest.body);
@@ -38,16 +44,16 @@ module.exports.addMeasurement = function(webRequest, webResponse)			// store a n
 	//	return;
 	//}
 	
-	// call database server by stored procedure
+	// submit data to dbs (by stored procedure)
 	dbc.func('radioheat_add_measurement', [ webRequest.body ])
-	.then(function(dbResponse)
+	.then(function(dbResponse)		// if request is successful
 	{
 		webResponse.json('alright');
 	})
-	.catch(function(dbError)
+	.catch(function(dbError)		// if request failed
 	{
 		console.log(dbError);
-		webResponse.send(dbError);
+		webResponse.sendStatus(500);
 	});
 
 };
