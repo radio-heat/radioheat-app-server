@@ -2,6 +2,7 @@
  * Author: Philip Jurke
  * Last changes:
  * 08.01.2017 - add comments
+ * 09.01.2017 - add app server config
  * -----------------------------------------*/
 
 // --------------------
@@ -9,6 +10,7 @@
 // --------------------
 
 var dbConfig = require('./config/db.json');					// import database configuration details
+var serverConfig = require('./config/server.json');			// import app-server configuration details
 
 var express = require('express');							// import express.js (module to handle REST-requests)
 var app = express();										// initialise express, create a new app
@@ -37,7 +39,7 @@ app.use(function(webRequest, webResponse)					// default route (not provided ser
 });
 
 // start listening
-app.listen(8080, function()
+app.listen(serverConfig.port, function()
 {
 	console.log('Application server initialised.');
 });

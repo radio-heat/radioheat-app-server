@@ -38,6 +38,7 @@
     <Compile Include="validation\validator.wlan.js" />
     <Content Include=".gitignore" />
     <Content Include="config\db.json" />
+    <Content Include="config\server.json" />
     <Content Include="data-structure-templates\data-input.json" />
     <Content Include="package.json" />
     <Content Include="README.md" />
