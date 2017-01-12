@@ -1,0 +1,10 @@
+﻿{
+  "returnType": "error",
+  "error": {
+    "type": "missingAttributes",
+    "missingAttributes": [
+      "attribute1",
+      "attribute2"
+    ]
+  }
+}

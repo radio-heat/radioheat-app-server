@@ -41,6 +41,8 @@
     <Content Include="config\db.json" />
     <Content Include="config\server.json" />
     <Content Include="data-structure-templates\data-input.json" />
+    <Content Include="data-structure-templates\errors\unformatted-attributes.error.json" />
+    <Content Include="data-structure-templates\errors\missing-attributes.error.json" />
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="validation\template.add-measurement-input.json" />
@@ -48,6 +50,7 @@
   <ItemGroup>
     <Folder Include="data-structure-templates\" />
     <Folder Include="config\" />
+    <Folder Include="data-structure-templates\errors\" />
     <Folder Include="logs\" />
     <Folder Include="extensions\" />
     <Folder Include="services\" />

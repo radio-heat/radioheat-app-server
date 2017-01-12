@@ -1,0 +1,10 @@
+﻿{
+  "returnType": "error",
+  "error": {
+    "type": "unformattedAttributes",
+    "unformattedAttributes": [
+      { "name": "attribute1Name", "format": "expectedRegex" },
+      { "name": "attribute2Name", "format": "expectedRegex" }
+    ]
+  }
+}

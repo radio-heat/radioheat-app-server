@@ -24,8 +24,9 @@ var app = express();
 // import body-parser (module to get json-data)
 var bodyParser = require('body-parser');
 
-// import default route handler
+// import express extensions and initialise them
 var expressExtensions = require('./extensions/express-extension.js');
+expressExtensions.init();
 
 // import services-module (outsourced)
 var services = require('./services/main-services.js');
@@ -39,6 +40,9 @@ var services = require('./services/main-services.js');
 // make use of body-parser (body-request => json format)
 app.use(bodyParser.json());
 
+// log all incoming requests
+app.use(expressExtensions.logRequests);
+
 // initialise service-module
 services.init(dbConfig);
 
@@ -46,6 +50,9 @@ services.init(dbConfig);
 
 // <domain>/add (store a new measurement)
 app.post('/add', services.addMeasurement);
+
+// <domain>/list (list all measurements)
+app.post('/list', services.listMeasurements);
 
 // default route (not provided service-urls)
 app.use(expressExtensions.defaultRoute);

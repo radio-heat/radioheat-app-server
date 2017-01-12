@@ -46,9 +46,27 @@ module.exports.addMeasurement = function(webRequest, webResponse)
 	
 	// submit data to dbs (by stored procedure)
 	dbc.func('radioheat_add_measurement', [ webRequest.body ])
-	.then(function(dbResponse)		// if request is successful
+	.then(function(dbResponse)		// if request was successful
 	{
 		webResponse.json('alright');
+	})
+	.catch(function(dbError)		// if request failed
+	{
+		console.log(dbError);
+		webResponse.sendStatus(500);
+	});
+
+};
+
+// load all measurement on a specific location
+module.exports.listMeasurements = function(webRequest, webResponse)
+{
+
+	dbc.func('radioheat_get_networks_around_point', [ webRequest.body.latitude, webRequest.body.longitude ])
+	.then(function(dbResponse)
+	{
+
+		webResponse.json(dbResponse);
 	})
 	.catch(function(dbError)		// if request failed
 	{
