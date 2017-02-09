@@ -9,7 +9,7 @@
 // -----------------------
 
 // regex for latitude-attribute
-var latitudeRegex = /^\s*[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$/;
+var latitudeRegex = /^\s*[-+]?(?:180(?:\.0+)?|(?:(?:1[0-7]\d)|(?:[1-9]?\d))(?:\.\d+)?)$/m;
 
 module.exports.isLatitude = function(latitude)
 {
@@ -17,9 +17,17 @@ module.exports.isLatitude = function(latitude)
 };
 
 // regex for longitude-attribute
-var longitudeRegex = /^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?)$/;
+var longitudeRegex = /^[-+]?(?:[1-8]?\d(?:\.\d+)?|90(?:\.0+)?)$/m;
 
 module.exports.isLongitude = function(longitude)
 {
 	return longitudeRegex.test(longitude);
+};
+
+// regex for storey-attribute
+var storeyRegex = /^-?1?[0-9]{1}$/m;
+
+module.exports.isStorey = function(storey)
+{
+	return storeyRegex.test(storey);
 };

@@ -1,4 +1,11 @@
-﻿# used modules
+﻿## files
+
+.ntvs_analysis.dat
+.ntvs_analysis.dat.tmp
+
+## directories
+
+# used modules
 node_modules
 
 # intelli-sense (from visual studio)

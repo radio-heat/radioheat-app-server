@@ -24,18 +24,33 @@ var app = express();
 // import body-parser (module to get json-data)
 var bodyParser = require('body-parser');
 
+// import pg-promise (postgresql-connection)
+var pgp = require('pg-promise')();
+
 // import express extensions and initialise them
 var expressExtensions = require('./extensions/express-extension.js');
 expressExtensions.init();
 
-// import services-module (outsourced)
-var services = require('./services/main-services.js');
+// import cors-module
+var cors = require('cors');
+
+// import services
+var addMeasurementService = require('./services/add-measurement/add.service.js'),
+	listMeasurementService = require('./services/list-measurements/list.service.js'),
+	listFrequencyBands = require('./services/list-frequency-bands/list.service.js');
 
 // --------------------
 // functionality
 // --------------------
 
 // === configure express
+
+// config database connection
+var dbc = pgp(dbConfig);
+
+// allow cors
+app.use(cors());
+app.options('*', cors());
 
 // make use of body-parser (body-request => json format)
 app.use(bodyParser.json());
@@ -44,15 +59,16 @@ app.use(bodyParser.json());
 app.use(expressExtensions.logRequests);
 
 // initialise service-module
-services.init(dbConfig);
+addMeasurementService.init(dbc);
+listMeasurementService.init(dbc);
+listFrequencyBands.init(dbc);
 
 // === routes
 
-// <domain>/add (store a new measurement)
-app.post('/add', services.addMeasurement);
-
-// <domain>/list (list all measurements)
-app.post('/list', services.listMeasurements);
+app.post('/add', addMeasurementService.service);
+app.post('/measurement/list', listMeasurementService.service);
+app.get('/frequency-band/list/2.4', listFrequencyBands.service24);
+app.get('/frequency-band/list/5', listFrequencyBands.service5);
 
 // default route (not provided service-urls)
 app.use(expressExtensions.defaultRoute);

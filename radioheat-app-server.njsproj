@@ -32,8 +32,11 @@
   <ItemGroup>
     <Compile Include="app.js" />
     <Compile Include="extensions\express-extension.js" />
-    <Compile Include="services\main-services.js" />
-    <Compile Include="validation\validator.add-measurement.js" />
+    <Compile Include="services\add-measurement\add.service.js" />
+    <Compile Include="services\add-measurement\add.validator.js" />
+    <Compile Include="services\list-frequency-bands\list.service.js" />
+    <Compile Include="services\list-measurements\list.validator.js" />
+    <Compile Include="services\list-measurements\list.service.js" />
     <Compile Include="validation\validator.datetime.js" />
     <Compile Include="validation\validator.location.js" />
     <Compile Include="validation\validator.wlan.js" />
@@ -45,7 +48,6 @@
     <Content Include="data-structure-templates\errors\missing-attributes.error.json" />
     <Content Include="package.json" />
     <Content Include="README.md" />
-    <Content Include="validation\template.add-measurement-input.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="data-structure-templates\" />
@@ -54,6 +56,9 @@
     <Folder Include="logs\" />
     <Folder Include="extensions\" />
     <Folder Include="services\" />
+    <Folder Include="services\list-measurements\" />
+    <Folder Include="services\list-frequency-bands\" />
+    <Folder Include="services\add-measurement\" />
     <Folder Include="validation\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
