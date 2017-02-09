@@ -11,7 +11,7 @@ var dbc;
 
 module.exports.init = function(dbConnection)
 {
-	// connect to database server
+	// save reference to db-handler
 	dbc = dbConnection;
 	
 	// output initialised message

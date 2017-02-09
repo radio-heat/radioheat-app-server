@@ -3,6 +3,7 @@
  * Last changes:
  * 08.01.2017 - add comments
  * 09.01.2017 - add app server config
+ * 09.02.2017 - disable x-powered-by (security)
  * -----------------------------------------*/
 
 // --------------------
@@ -43,7 +44,7 @@ var addMeasurementService = require('./services/add-measurement/add.service.js')
 // functionality
 // --------------------
 
-// === configure express
+// === configuration
 
 // config database connection
 var dbc = pgp(dbConfig);
@@ -52,13 +53,16 @@ var dbc = pgp(dbConfig);
 app.use(cors());
 app.options('*', cors());
 
+// disable x-powered-by (for security reasons)
+app.disable('x-powered-by');
+
 // make use of body-parser (body-request => json format)
 app.use(bodyParser.json());
 
 // log all incoming requests
 app.use(expressExtensions.logRequests);
 
-// initialise service-module
+// initialise service-module (with db-reference)
 addMeasurementService.init(dbc);
 listMeasurementService.init(dbc);
 listFrequencyBands.init(dbc);
