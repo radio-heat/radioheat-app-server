@@ -9,8 +9,8 @@
     "pg-promise": "^5.5.0",
     "validator": "^6.2.0"
   },
-  "description": "no description available",
+  "description": "The application server / REST service for project RadioHeat.",
   "main": "app.js",
   "name": "radioheat-app-server",
-  "version": "0.0.5"
+  "version": "1.0.0"
 }
