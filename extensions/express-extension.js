@@ -16,7 +16,7 @@ module.exports.init = function()
 	var fs = require('fs');
 	
 	// create file stream
-	requestStream = fs.createWriteStream('./logs/requests.log', { 'flags': 'a' });
+	requestStream = fs.createWriteStream('../logs/requests.log', { 'flags': 'a' });
 };
 
 // log server-requests
