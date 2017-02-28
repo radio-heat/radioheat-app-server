@@ -1,0 +1,21 @@
+﻿{
+  "datetime": {
+    "year": { "isOptional": false },
+    "month": { "isOptional": false },
+    "day": { "isOptional": false },
+    "hour": { "isOptional": false },
+    "minute": { "isOptional": false },
+    "second": { "isOptional": false }
+  },
+  "location": {
+    "latitude": { "isOptional": false },
+    "longitude": { "isOptional": false },
+    "storey": { "isOptional": false }
+  },
+  "wlanNetworks": {
+    "bssid": { "isOptional": false },
+    "frequency": { "isOptional": false },
+    "ssid": { "isOptional": false },
+    "strength": { "isOptional": false }
+  }
+}

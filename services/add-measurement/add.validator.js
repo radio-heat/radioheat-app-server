@@ -17,7 +17,7 @@ module.exports.validate = function(input)
 	
 	var missingAttributes = [];
 	
-	var datetime = ['day', 'month', 'year', 'hour', 'minute', 'second'];
+	var datetime = ['year', 'month', 'day', 'hour', 'minute', 'second'];
 	
 	if (!input.hasOwnProperty('datetime'))
 		missingAttributes.push('datetime');
@@ -60,15 +60,14 @@ module.exports.validate = function(input)
 	// second level validation: attributes contain correct data?
 	
 	var unformattedAttributes = [];
-	
-	if (!datetimeValidator.isDay(input['datetime']['day']))
-		unformattedAttributes['datetime.day'];
+	if (!datetimeValidator.isYear(input['datetime']['year']))
+		unformattedAttributes['datetime.year'];
 	
 	if (!datetimeValidator.isMonth(input['datetime']['month']))
 		unformattedAttributes['datetime.month'];
-	
-	if (!datetimeValidator.isYear(input['datetime']['year']))
-		unformattedAttributes['datetime.year'];
+
+	if (!datetimeValidator.isDay(input['datetime']['day']))
+		unformattedAttributes['datetime.day'];
 	
 	if (!datetimeValidator.isHour(input['datetime']['hour']))
 		unformattedAttributes['datetime.hour'];

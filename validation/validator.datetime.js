@@ -8,13 +8,14 @@
 // Date
 // -----------------------
 
-// regex for a day
-var dayRegex = /^(?:[1-9]|[12][0-9]|3[01])$/m;
+// regex for a year
+var yearRegex = /^20[1-9][0-9]$/m;
 
-module.exports.isDay = function(day)
+module.exports.isYear = function(year)
 {
-	return dayRegex.test(day);
+	return yearRegex.test(year);
 };
+
 
 // regex for a month
 var monthRegex = /^(?:[1-9]|1[0-2])$/m;
@@ -24,24 +25,26 @@ module.exports.isMonth = function(month)
 	return monthRegex.test(month);
 };
 
-// regex for a year
-var yearRegex = /^20[1-9][0-9]$/m;
+// regex for a day
+var dayRegex = /^(?:[1-9]|[12][0-9]|3[01])$/m;
 
-module.exports.isYear = function(year)
+module.exports.isDay = function(day)
 {
-	return yearRegex.test(year);
+	return dayRegex.test(day);
 };
+
+
 
 // -----------------------
 // Time
 // -----------------------
 
-// regex for a second
-var secondRegex = /^[1-5]?[0-9]$/m;
+// regex for an hour
+var hourRegex = /^(?:1?[0-9]|2[0-3])$/m;
 
-module.exports.isSecond = function(second)
+module.exports.isHour = function(hour)
 {
-	return secondRegex.test(second);
+	return hourRegex.test(hour);
 };
 
 // regex for a minute
@@ -52,10 +55,12 @@ module.exports.isMinute = function(minute)
 	return minuteRegex.test(minute);
 };
 
-// regex for an hour
-var hourRegex = /^(?:1?[0-9]|2[0-3])$/m;
+// regex for a second
+var secondRegex = /^[1-5]?[0-9]$/m;
 
-module.exports.isHour = function(hour)
+module.exports.isSecond = function(second)
 {
-	return hourRegex.test(hour);
+	return secondRegex.test(second);
 };
+
+
